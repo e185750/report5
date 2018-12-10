@@ -1,28 +1,63 @@
 package jp.ac.uryukyu.ie.e185750;
 
+/**
+ * 勇者とモンスターのバトルの実装
+ *   String name; //ヒーローと敵の名前
+ *   int hitPoint; //ヒーローと敵のHP
+ *   int attack; //ヒーローと敵の攻撃力
+ *   boolean dead; //敵の生死状態。true=死亡。
+ */
+
 public class LivingThing {
     private String name;
     private int hitPoint;
     private int attack;
     private boolean dead;
 
+    /**
+     *
+     * @return
+     */
+
     public boolean getDead(){
         return dead;
     }
+
+    /**
+     *
+     * @param dead　敵の生死状態
+     */
 
     public void  setDead(boolean dead){
         this.dead = dead;
     }
 
+    /**
+     *
+     * @return
+     */
+
     public int getHitPoint(){
         return  hitPoint;
     }
+
+    /**
+     *
+     * @param hitPoint　ヒーローと敵のHP
+     */
 
     public void  setHitPoint(int hitPoint){
         this.hitPoint = hitPoint;
     }
 
-
+    /**
+     *　コンストラクタ。名前、最大HP、攻撃力を指定する。
+     *　ヒーローと敵の名前とHPと攻撃力を出力している。
+     *
+     * @param name　　　　ヒーローと敵の名前　　　　
+     * @param maximumHP　ヒーローと敵のHP
+     * @param attack　　　ヒーローと敵の攻撃力
+     */
     public LivingThing(String name, int maximumHP, int attack){
         this.name = name;
         hitPoint = maximumHP;
@@ -31,9 +66,24 @@ public class LivingThing {
         System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
     }
 
+    /**
+     *
+     * @return dead
+     */
+
     public boolean isDead(){return dead;}
 
+    /**
+     *
+     * @return name
+     */
+
     public String getName(){return name;}
+
+    /**
+     *
+     * @param opponent　
+     */
 
     public void attack(LivingThing opponent){
         int damage = (int) (Math.random() * attack);
@@ -43,6 +93,11 @@ public class LivingThing {
         }
 
     }
+
+    /**
+     *
+     * @param damage　受けたダメージ
+     */
 
     public void wounded(int damage){
         hitPoint -= damage;
